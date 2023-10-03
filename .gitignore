@@ -1,0 +1,33 @@
+# Virtual environment
+venv/
+
+# Compiled Python files
+__pycache__/
+
+# Logs and databases
+*.log
+*.db
+
+# Environment-specific files
+.env
+
+# Editor/IDE-specific files
+.vscode/
+.idea/
+
+# Byte-compiled Python files
+*.pyc
+
+# Temporary files and directories
+*.swp
+.DS_Store
+
+# Configuration files with sensitive information (e.g., secret keys)
+instance/config.py
+
+# Compiled files for templates
+*.pyc
+*.pyo
+
+# Ignore migration files for databases (if you're using Flask-Migrate)
+migrations/
