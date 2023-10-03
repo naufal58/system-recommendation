@@ -18,8 +18,8 @@ RUN pip install -r requirements.txt
 # Copy the Flask application code into the container
 COPY . .
 
-# Expose the port that Flask will run on (usually 5000)
-EXPOSE 5000:5006
+# Expose the port that Flask will run on 5006
+EXPOSE 5006:5006
 
 # Define the command to run the Flask application
 CMD ["flask", "run"]

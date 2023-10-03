@@ -3,4 +3,4 @@ services:
   system-recommendation:
     build: . # build image from docker file
     ports:
-      - "5000:5000"  # Map container port 5000 to host port 5000
+      - "5006:5006"  # Map container port 5006 to host port 5006
