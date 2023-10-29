@@ -10,43 +10,43 @@ nltk.download('cmudict')
 def preprocess(text):
     return text.replace('.', '').lower()
 
-def extractTagFeatures(text, underlinedIndex):
+def tag_features(text, underlinedIndex):
     pos = pos_tag(word_tokenize(text))
-    underlinedPosTag = []
-    irregularVerbs = []
-    regularVerbs = []
+    underlined_postags = []
+    irregular_verbs = []
+    regular_verbs = []
     
     for i in range(len(pos)):
         if i in underlinedIndex:
-            underlinedPosTag.append(pos[i])
+            underlined_postags.append(pos[i])
         if pos[i][1] == 'VBN': ## Irregular verbs 
-            irregularVerbs.append(pos[i])
+            irregular_verbs.append(pos[i])
         elif pos[i][1] == 'VBD': ## Regular verbs 
-            regularVerbs.append(pos[i])
-    return underlinedPosTag, irregularVerbs, regularVerbs
+            regular_verbs.append(pos[i])
+    return underlined_postags, irregular_verbs, regular_verbs
 
-def checkHomophones(word):
+def check_homophones(word):
     # Access the CMU Pronouncing Dictionary
     pronouncing_dict = cmudict.dict()
     entries = cmudict.entries()
-    listOfHomophones = []
+    list_of_homophones = []
     for i in entries:
         if pronouncing_dict[word][0] == i[1]:
-            listOfHomophones.append(i)
+            list_of_homophones.append(i)
         
-    if len(listOfHomophones) > 1:
-        return True, listOfHomophones
+    if len(list_of_homophones) > 1:
+        return True, list_of_homophones
     return False, []
 
-def countHomophones(text):
-    numOfHomophones = 0
+def count_homophones(text):
+    num_of_homophones = 0
     for word in word_tokenize(preprocess(text)):
-        homophones = checkHomophones(word)
+        homophones = check_homophones(word)
         if homophones[0] == True:
-            numOfHomophones += 1
-    return numOfHomophones
+            num_of_homophones += 1
+    return num_of_homophones
 
-def syllableCount(word):
+def syllable_count(word):
     d = cmudict.dict()
     # Check if the word is in the dictionary
     if word.lower() in d:
@@ -62,20 +62,20 @@ def fleschReadingEase(text):
 
     total_words = len(words)
     total_sentences = len(sentences)
-    total_syllables = sum(syllableCount(word) for word in words)
+    total_syllables = sum(syllable_count(word) for word in words)
 
     score = 206.835 - 1.015 * (total_words / total_sentences) - 84.6 * (total_syllables / total_words)
 
     return score
 
-def numOfConjunctions(text):
+def num_of_conjunctions(text):
     words = word_tokenize(preprocess(text))
     pos_tags = pos_tag(words)
 
     conjunctions = [word for word, pos_tag in pos_tags if pos_tag == 'CC']
     return len(conjunctions)
 
-def tensesType(text):
+def tenses_type(text):
     words = word_tokenize(preprocess(text))
     pos_tags = pos_tag(words)
 
