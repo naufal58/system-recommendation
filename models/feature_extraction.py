@@ -31,7 +31,8 @@ def check_homophones(word):
     entries = cmudict.entries()
     list_of_homophones = []
     for i in entries:
-        if pronouncing_dict[word][0] == i[1]:
+        if pronouncing_dict[word][0] == i[1] and len(list_of_homophones) <= 1:
+            print(i)
             list_of_homophones.append(i)
         
     if len(list_of_homophones) > 1:
@@ -40,6 +41,7 @@ def check_homophones(word):
 
 def count_homophones(text):
     num_of_homophones = 0
+    print(preprocess(text))
     for word in word_tokenize(preprocess(text)):
         homophones = check_homophones(word)
         if homophones[0] == True:
