@@ -8,7 +8,7 @@ nltk.download('averaged_perceptron_tagger')
 nltk.download('cmudict')
 
 def preprocess(text):
-    return text.replace('.', '').lower()
+    return text.replace('.', '').replace(',', '').lower()
 
 def tag_features(text, underlinedIndex):
     pos = pos_tag(word_tokenize(text))
@@ -27,12 +27,12 @@ def tag_features(text, underlinedIndex):
 
 def check_homophones(word):
     # Access the CMU Pronouncing Dictionary
+    print(word)
     pronouncing_dict = cmudict.dict()
     entries = cmudict.entries()
     list_of_homophones = []
     for i in entries:
         if pronouncing_dict[word][0] == i[1] and len(list_of_homophones) <= 1:
-            print(i)
             list_of_homophones.append(i)
         
     if len(list_of_homophones) > 1:
@@ -58,7 +58,7 @@ def syllable_count(word):
         # If the word is not in the dictionary, return a default value
         return 1
 
-def fleschReadingEase(text):
+def flesch_reading_ease(text):
     words = word_tokenize(preprocess(text))
     sentences = sent_tokenize(text)
 
@@ -103,4 +103,4 @@ def tenses_type(text):
     elif past_tense_verbs:
         return 'past'
     else:
-        'present'
+        return 'present'
