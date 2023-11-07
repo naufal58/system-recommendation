@@ -1,6 +1,8 @@
 import nltk
 from nltk import word_tokenize, pos_tag, sent_tokenize
 from nltk.corpus import cmudict
+import pandas as pd
+import os
 
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
@@ -105,3 +107,34 @@ def tenses_type(text):
         return 'past'
     else:
         return 'present'
+
+def word_frequency(word, dictionary, freq_dict):
+    i = 0
+    stat = 0
+
+    for lemma in dictionary:
+      if word == lemma:
+        stat = 1
+        return freq_dict[i]
+        break
+      i += 1
+    if stat == 0:
+      return 0
+    
+def difficult_vocab(text):
+    path = os.getcwd()
+    data_path = path + '/data/lemmas_60k_words.xlsx'
+    df = pd.read_excel(data_path, sheet_name='wordfrequency', usecols=['word', 'freq']).astype(str)
+    dictionary = df.word.to_list()
+    freq_dict = df.freq.to_list()
+
+    difficult_words = []
+    for word in word_tokenize(preprocess(text)):
+        freq = word_frequency(word, dictionary, freq_dict)
+        difficult_words.append({'word': word, 'frequency': freq})
+    
+    return sort_difficult_vocab(difficult_words)
+
+def sort_difficult_vocab(difficult_words):
+    sorted_list = sorted(difficult_words, key=lambda x: int(x["frequency"]), reverse=False)
+    return sorted_list[:3]

@@ -25,7 +25,21 @@
             ],
             "irregular_verbs": 0,
             "regular_verbs": 0,
-            "question_text": "These television are all to expensive for we to buy at this time, but perhaps we will return later"
+            "question_text": "These television are all to expensive for we to buy at this time, but perhaps we will return later",
+            "difficult_vocab": [
+                {
+                    "word": "expensive",
+                    "frequency": "604"
+                },
+                {
+                    "word": "return",
+                    "frequency": "697"
+                },
+                {
+                    "word": "buy",
+                    "frequency": "965"
+                }
+            ]
         }
     ]
 }

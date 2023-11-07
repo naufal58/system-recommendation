@@ -27,6 +27,11 @@ class DemoPipeline:
         underlined_postags, irregular_verbs, regular_verbs = tag_features(self.text, self.underline)
         return underlined_postags, irregular_verbs, regular_verbs
     
+    def get_vocab_difficulty(self):
+        diff_vocab = difficult_vocab(self.text)
+        return diff_vocab
+
+    
     def pipeline(self):
         response = {}
         response['homophones'] = self.get_homophones()
@@ -35,5 +40,6 @@ class DemoPipeline:
         response['flesch_reading_ease'] = self.get_fre()
         response['underlined_postags'], response['irregular_verbs'], response['regular_verbs'] = self.get_tag_features()
         response['question_text'] = self.text
+        response['difficult_vocab'] = self.get_vocab_difficulty()
 
         return response
