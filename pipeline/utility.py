@@ -21,7 +21,7 @@ def demo_extract():
     for data in training_data['data']:
         demo_pipeline = DemoPipeline(data['text'], preprocess_underlined(data['underline']))
         print(demo_pipeline.pipeline())
-        if data['id'] == 5:
+        if data['id'] == 30:
             break
     return True
     # demo_pipeline = DemoPipeline("It's always a good idea to seek shelter from the evil gaze of the sun.")
