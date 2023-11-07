@@ -13,7 +13,7 @@ def get_training_data():
 def preprocess_underlined(underline):
     underline_list = []
     for i in underline.split(','):
-        underline_list.append(i.split('-')[0])
+        underline_list.append(int(i.split('-')[0]))
     return underline_list
 
 def demo_extract():

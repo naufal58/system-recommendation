@@ -11,12 +11,13 @@ def preprocess(text):
     return text.replace('.', '').replace(',', '').lower()
 
 def tag_features(text, underlinedIndex):
-    pos = pos_tag(word_tokenize(text))
+    pos = pos_tag(word_tokenize(preprocess(text)))
     underlined_postags = []
     irregular_verbs = []
     regular_verbs = []
-    
+    print(f'postag: {pos}')
     for i in range(len(pos)):
+        print(f'i: {i}, pos[i]: {pos[i]}')
         if i in underlinedIndex:
             underlined_postags.append(pos[i])
         if pos[i][1] == 'VBN': ## Irregular verbs 
