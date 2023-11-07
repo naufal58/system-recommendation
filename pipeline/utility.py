@@ -32,13 +32,11 @@ def demo_extract():
     new_training_data = []
     for data in training_data['data']:
         demo_pipeline = DemoPipeline(data['text'], preprocess_underlined(data['underline']))
-        # print(demo_pipeline.pipeline())
         new_training_data.append(demo_pipeline.pipeline())
-        if data['id'] == 1:
+        if data['id'] == 1: # Set to 1
             break
     if set_training_data({'data': new_training_data}):
         return True
     else:
         return False
-    # demo_pipeline = DemoPipeline("It's always a good idea to seek shelter from the evil gaze of the sun.")
 

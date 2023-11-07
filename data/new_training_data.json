@@ -23,8 +23,9 @@
                     "DT"
                 ]
             ],
-            "irregular_verbs": [],
-            "regular_verbs": []
+            "irregular_verbs": 0,
+            "regular_verbs": 0,
+            "question_text": "These television are all to expensive for we to buy at this time, but perhaps we will return later"
         }
     ]
 }
