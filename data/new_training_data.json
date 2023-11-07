@@ -1,0 +1,30 @@
+{
+    "data": [
+        {
+            "homophones": 10,
+            "conjunctions": 1,
+            "tense_type": "future",
+            "flesch_reading_ease": 67.32894736842107,
+            "underlined_postags": [
+                [
+                    "these",
+                    "DT"
+                ],
+                [
+                    "to",
+                    "TO"
+                ],
+                [
+                    "we",
+                    "PRP"
+                ],
+                [
+                    "this",
+                    "DT"
+                ]
+            ],
+            "irregular_verbs": [],
+            "regular_verbs": []
+        }
+    ]
+}

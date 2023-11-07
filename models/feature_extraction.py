@@ -44,7 +44,10 @@ def count_homophones(text):
     num_of_homophones = 0
     print(preprocess(text))
     for word in word_tokenize(preprocess(text)):
-        homophones = check_homophones(word)
+        try:
+            homophones = check_homophones(word)
+        except:
+            continue
         if homophones[0] == True:
             num_of_homophones += 1
     return num_of_homophones

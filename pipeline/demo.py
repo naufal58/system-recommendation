@@ -24,7 +24,6 @@ class DemoPipeline:
         return fre
     
     def get_tag_features(self):
-        print(self.underline)
         underlined_postags, irregular_verbs, regular_verbs = tag_features(self.text, self.underline)
         return underlined_postags, irregular_verbs, regular_verbs
     
@@ -35,5 +34,6 @@ class DemoPipeline:
         response['tense_type'] = self.get_tense_type()
         response['flesch_reading_ease'] = self.get_fre()
         response['underlined_postags'], response['irregular_verbs'], response['regular_verbs'] = self.get_tag_features()
+        response['question_text'] = self.text
 
         return response
