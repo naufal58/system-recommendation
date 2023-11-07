@@ -1,7 +1,6 @@
 import nltk
 from nltk import word_tokenize, pos_tag, sent_tokenize
 from nltk.corpus import cmudict
-import pandas as pd
 
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
@@ -10,25 +9,23 @@ nltk.download('cmudict')
 def preprocess(text):
     return text.replace('.', '').replace(',', '').lower()
 
-def tag_features(text, underlinedIndex):
+def tag_features(text, underlined_index):
     pos = pos_tag(word_tokenize(preprocess(text)))
     underlined_postags = []
     irregular_verbs = []
     regular_verbs = []
-    print(f'postag: {pos}')
+
     for i in range(len(pos)):
-        print(f'i: {i}, pos[i]: {pos[i]}')
-        if i in underlinedIndex:
+        if i in underlined_index:
             underlined_postags.append(pos[i])
         if pos[i][1] == 'VBN': ## Irregular verbs 
             irregular_verbs.append(pos[i])
         elif pos[i][1] == 'VBD': ## Regular verbs 
             regular_verbs.append(pos[i])
-    return underlined_postags, irregular_verbs, regular_verbs
+
+    return underlined_postags, len(irregular_verbs), len(regular_verbs)
 
 def check_homophones(word):
-    # Access the CMU Pronouncing Dictionary
-    print(word)
     pronouncing_dict = cmudict.dict()
     entries = cmudict.entries()
     list_of_homophones = []
