@@ -41,7 +41,6 @@ def check_homophones(word):
 
 def count_homophones(text):
     num_of_homophones = 0
-    print(preprocess(text))
     for word in word_tokenize(preprocess(text)):
         try:
             homophones = check_homophones(word)
@@ -85,7 +84,6 @@ def tenses_type(text):
     pos_tags = pos_tag(words)
 
     future_tense_verbs = []
-    present_tense_verbs = []
     past_tense_verbs = []
 
     for i in range(len(pos_tags)-1):
@@ -96,8 +94,6 @@ def tenses_type(text):
             # Check for modal verb 'will' or 'shall' followed by a base form verb
             if current_word.lower() in ['will', 'shall']:
                 future_tense_verbs.append(next_word)
-        # elif current_pos in ['VB', 'VBG', 'VBP', 'VBZ']:
-        #     present_tense_verbs.append(current_word)
         elif current_pos in ['VBD', 'VBN']:
             past_tense_verbs.append(current_word)
     

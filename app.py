@@ -2,7 +2,6 @@ from flask import Flask
 from pipeline.demo import DemoPipeline
 from pipeline.utility import demo_extract
 
-
 app = Flask(__name__)
 
 @app.route("/")

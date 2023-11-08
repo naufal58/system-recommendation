@@ -1,6 +1,4 @@
 from models.feature_extraction import *
-import json
-import os
 
 class DemoPipeline:
     def __init__(self, text, underline):
@@ -30,16 +28,15 @@ class DemoPipeline:
     def get_vocab_difficulty(self):
         diff_vocab = difficult_vocab(self.text)
         return diff_vocab
-
     
     def pipeline(self):
         response = {}
+        response['question_text'] = self.text
+        response['tense_type'] = self.get_tense_type()
+        response['underlined_postags'], response['irregular_verbs'], response['regular_verbs'] = self.get_tag_features()
         response['homophones'] = self.get_homophones()
         response['conjunctions'] = self.get_conjunctions()
-        response['tense_type'] = self.get_tense_type()
         response['flesch_reading_ease'] = self.get_fre()
-        response['underlined_postags'], response['irregular_verbs'], response['regular_verbs'] = self.get_tag_features()
-        response['question_text'] = self.text
         response['difficult_vocab'] = self.get_vocab_difficulty()
 
         return response

@@ -16,7 +16,7 @@ def set_training_data(data):
 
     try:
         with open(data_path, 'w') as json_file:
-            json.dump(data, json_file, indent=4)
+            json.dump(data, json_file)
         return True
     except:
         return False
