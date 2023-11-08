@@ -34,9 +34,8 @@ def check_homophones(word):
     for i in entries:
         if pronouncing_dict[word][0] == i[1] and len(list_of_homophones) <= 1:
             list_of_homophones.append(i)
-        
-    if len(list_of_homophones) > 1:
-        return True, list_of_homophones
+        if len(list_of_homophones) > 1:
+            return True, list_of_homophones
     return False, []
 
 def count_homophones(text):
