@@ -27,13 +27,15 @@ def preprocess_underlined(underline):
         underline_list.append(int(i.split('-')[0]))
     return underline_list
 
-def demo_extract():
+def demo_extract(count=1):
     training_data = get_training_data()
     new_training_data = []
+    counter = 0
     for data in training_data['data']:
         demo_pipeline = DemoPipeline(data['text'], preprocess_underlined(data['underline']))
         new_training_data.append(demo_pipeline.pipeline())
-        if data['id'] == 1: # Set to 1
+        counter += 1
+        if counter == count:
             break
     if set_training_data({'data': new_training_data}):
         return True

@@ -32,11 +32,23 @@ class DemoPipeline:
     def pipeline(self):
         response = {}
         response['question_text'] = self.text
+
+        print('Getting tense type...')
         response['tense_type'] = self.get_tense_type()
+
+        print('Getting tags features...')
         response['underlined_postags'], response['irregular_verbs'], response['regular_verbs'] = self.get_tag_features()
+
+        print('Counting homophones...')
         response['homophones'] = self.get_homophones()
+
+        print('Counting conjunctions...')
         response['conjunctions'] = self.get_conjunctions()
+
+        print('Calculating Flesch Reading Ease...')
         response['flesch_reading_ease'] = self.get_fre()
+
+        print('Calculating vocabulary difficulty...')
         response['difficult_vocab'] = self.get_vocab_difficulty()
 
         return response

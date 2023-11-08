@@ -15,7 +15,7 @@ def demo_pipeline():
 
 @app.route("/demo/database", methods=['GET'])
 def demo_pipeline_database():
-    demo_pipeline = demo_extract()
+    demo_pipeline = demo_extract(5)
     return {'msg': demo_pipeline}
 
 if __name__ == '__main__':
