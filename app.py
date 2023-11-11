@@ -8,6 +8,7 @@ from pipeline.utility import demo_extract
 app = Flask(__name__)
 app.config.from_object('src.utils.setting.Config')
 
+
 # initialization
 db.init_app(app)
 @app.route("/")
@@ -25,7 +26,7 @@ def demo_pipeline_database():
     return {'msg': demo_pipeline}
 
 # adding routes
-app.add_url_rule('/recommendation', view_func=Recommendation.HelloWord, methods=['GET',])
+app.add_url_rule('/recommendation/<int:id>', view_func=Recommendation.recommendation, methods=['GET',])
 
 #run
 if __name__ == '__main__':

@@ -13,3 +13,13 @@ class QuestionBank(db.Model):
         return QuestionBank.query.order_by(QuestionBank.id).all()
     def __repr__(self):
         return '<id {}>'.format(self.id)
+    # create function that needed by controllers
+    @staticmethod
+    def get_by_id(id):
+        return QuestionBank.query.filter_by(id=id).first()
+    @staticmethod
+    def get_by_question(question):
+        return QuestionBank.query.filter_by(question=question).first()
+    @staticmethod
+    def get_by_answer(answer):
+        return QuestionBank.query.filter_by(answer=answer).first()
