@@ -1,5 +1,5 @@
 # Use a base image with Python
-FROM python:3.8-alpine
+FROM python:3.10-alpine
 
 # Set environment variables
 ENV FLASK_APP=app.py
