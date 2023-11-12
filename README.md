@@ -3,7 +3,6 @@
 ```
 docker-compose -f docker-compose.yml up --build
 ```
-
 ## Add new dependency
 ### Go to container 
 ```
