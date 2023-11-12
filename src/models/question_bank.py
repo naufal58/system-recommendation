@@ -1,7 +1,7 @@
 from src.utils.db import db 
 
 class QuestionBank(db.Model):
-    __tablename__ = 'question_bank'
+    __tablename__ = 'question_banks'
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.String(120), unique=True, nullable=False)
     answer = db.Column(db.String(120), unique=True, nullable=False)
