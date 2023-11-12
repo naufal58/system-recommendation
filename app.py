@@ -1,24 +1,34 @@
 from flask import Flask
-# from flask_script import Manager
-# from flask_migrate import Migrate, MigrateCommand
-# from inc.db import db
-from src.routes.route import routes  # Import your routes
+from src.utils.db import db
+# Import controllers
+from src.controllers.recommendation import Recommendation
+from pipeline.demo import DemoPipeline
+from pipeline.utility import demo_extract
 
 app = Flask(__name__)
-# app.config.from_object('settings.Config')
+app.config.from_object('src.utils.setting.Config')
 
-# Initialization
-# db.init_app(app)
 
-# Migration
-# migrate = Migrate(app, db)
-# manager = Manager(app)
-# manager.add_command('db', MigrateCommand)
+# initialization
+db.init_app(app)
+@app.route("/")
+def hello_world():
+    return {'msg': "Hello World!"}
 
-# Register the Blueprint for your routes
-app.register_blueprint(routes)
+@app.route("/demo", methods=['GET'])
+def demo_pipeline():
+    demo_pipeline = DemoPipeline("It's always a good idea to seek shelter from the evil gaze of the sun.")
+    return demo_pipeline.pipeline()
 
-# Run the application
+@app.route("/demo/database", methods=['GET'])
+def demo_pipeline_database():
+    demo_pipeline = demo_extract(5)
+    return {'msg': demo_pipeline}
+
+# adding routes
+app.add_url_rule('/recommendation/<int:id>', view_func=Recommendation.recommendation, methods=['GET',])
+
+#run
 if __name__ == '__main__':
-    app.run(host='localhost')
-    # manager.run()
+    # Change the port to 5006
+    app.run(debug=True, port=5006)
