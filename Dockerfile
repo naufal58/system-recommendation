@@ -1,25 +1,31 @@
-# Use a base image with Python
-FROM python:3.10-alpine
+FROM python:3.10-slim
 
-# Set environment variables
-ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST=0.0.0.0
+# Install system dependencies
+RUN apt-get update && apt-get install -y
 
-# Create and set the working directory in the container
+# Create the working directory and set it as the working directory
 WORKDIR /app
 
-# Install Flask
-RUN pip install Flask
+# Copy only the requirements file and cache dependencies
+COPY requirements.txt /app/
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the requirements file into the container and install dependencies
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+# Set NLTK data directory
+ENV NLTK_DATA=/opt/nltk_data
 
-# Copy the Flask application code into the container
-COPY . .
+# Download NLTK data
+RUN python -m nltk.downloader -d /opt/nltk_data punkt wordnet averaged_perceptron_tagger
 
-# Expose the port that Flask will run on 5006
-EXPOSE 5006:5006
+# Clean up
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Define the command to run the Flask application
-CMD ["flask", "run"]
+# Copy the rest of the application code
+COPY . /app/
+
+# Expose the necessary port
+EXPOSE 5006
+
+# Run the application
+CMD ["gunicorn", "-c", "src/utils/gunicorn.conf.py", "app:app"]
