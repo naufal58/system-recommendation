@@ -80,8 +80,6 @@ class Recommendation():
        # Apply FP-growth to find frequent itemsets
        frequent_itemsets = fpgrowth(data, min_support=0.5, use_colnames=True)
 
-    #    print(frequent_itemsets)
-
        maxItem =  len(frequent_itemsets) if len(frequent_itemsets) < 3 else 3 
        detections = []
 
