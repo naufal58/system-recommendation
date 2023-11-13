@@ -1,7 +1,7 @@
 from src.utils.db import db 
 
 class TestResultDetail(db.Model):
-    __tablename__ = 'test_result_detail'
+    __tablename__ = 'test_result_details'
     id = db.Column(db.Integer, primary_key=True)
     test_result_id = db.Column(db.Integer, unique=True, nullable=False)
     question_id = db.Column(db.Integer, unique=True, nullable=False)
