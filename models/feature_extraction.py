@@ -4,10 +4,6 @@ from nltk.corpus import cmudict
 import pandas as pd
 import os
 
-nltk.download('punkt')
-nltk.download('averaged_perceptron_tagger')
-nltk.download('cmudict')
-
 def preprocess(text):
     return text.replace('.', '').replace(',', '').lower()
 
