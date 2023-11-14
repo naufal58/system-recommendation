@@ -10,7 +10,7 @@ from sqlalchemy import create_engine, text
 from src.utils.db import db
 
 # import question characteristic 
-from pipeline.demo import DemoPipeline
+from src.pipeline.extract_features import extract_features
 
 # import Orange3
 import Orange
@@ -68,7 +68,7 @@ class Recommendation():
     #    rows = result.all()
 
        # feature extraction 
-    #    pipeline = DemoPipeline(rows[0].question, [2,5,6,13])
+    #    pipeline = extract_features(rows[0].question, [2,5,6,13])
 
        # diskritisasi dataset 
     #    diskrit_data = Recommendation.dataset_discretization(pipeline.pipeline())
