@@ -114,8 +114,8 @@ class FeatureExtraction():
                 return freq_dict[i]
                 break
             i += 1
-            if stat == 0:
-                return 0
+        if stat == 0:
+            return 0
         
     def difficult_vocab(self):
         path = os.getcwd()
@@ -127,7 +127,8 @@ class FeatureExtraction():
         difficult_words = []
         for word in word_tokenize(self.preprocess(self.text)):
             freq = self.word_frequency(word, dictionary, freq_dict)
-            difficult_words.append({'word': word, 'frequency': freq})
+            if freq != 0:
+                difficult_words.append({'word': word, 'frequency': freq})
         
         return self.sort_difficult_vocab(difficult_words)
 
