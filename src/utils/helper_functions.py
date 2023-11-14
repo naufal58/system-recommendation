@@ -1,6 +1,6 @@
 import json
 import os
-from src.pipeline.demo import DemoPipeline
+from src.pipeline.extract_features import extract_features
 
 def get_training_data():
     path = os.getcwd()
@@ -32,7 +32,7 @@ def demo_extract(count=1):
     new_training_data = []
     counter = 0
     for data in training_data['data']:
-        demo_pipeline = DemoPipeline(data['text'], preprocess_underlined(data['underline']))
+        demo_pipeline = extract_features(data['text'], preprocess_underlined(data['underline']))
         new_training_data.append(demo_pipeline.pipeline())
         counter += 1
         if counter == count:
