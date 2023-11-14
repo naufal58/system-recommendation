@@ -2,8 +2,8 @@ from flask import Flask
 from src.utils.db import db
 # Import controllers
 from src.controllers.recommendation import Recommendation
-from pipeline.demo import DemoPipeline
-from pipeline.utility import demo_extract
+from src.pipeline.demo import DemoPipeline
+from src.utils.helper_functions import demo_extract
 
 app = Flask(__name__)
 app.config.from_object('src.utils.setting.Config')
