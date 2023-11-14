@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.config.from_object('src.utils.setting.Config')
 
 # initialization
-db.init_app(app)
+# db.init_app(app)
 
 @app.route("/")
 def hello_world():
