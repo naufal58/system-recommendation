@@ -35,3 +35,4 @@ app.add_url_rule('/recommendation/<int:id>', view_func=Recommendation.recommenda
 if __name__ == '__main__':
     # Change the port to 5006
     app.run(debug=True, port=5006)
+
