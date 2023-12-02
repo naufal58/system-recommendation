@@ -1,5 +1,5 @@
 import nltk
-from nltk import word_tokenize, pos_tag, sent_tokenize
+from nltk import word_tokenize, pos_tag, sent_tokenize, ne_chunk
 from nltk.corpus import cmudict
 import pandas as pd
 import os
@@ -35,19 +35,28 @@ class FeatureExtraction():
         for i in entries:
             if pronouncing_dict[word][0] == i[1] and len(list_of_homophones) <= 1:
                 list_of_homophones.append(i)
-            if len(list_of_homophones) > 1:
                 return True, list_of_homophones
         return False, []
 
     def count_homophones(self):
+        """Only check the homophones from the options of the question's answer.
+        """
         num_of_homophones = 0
-        for word in word_tokenize(self.preprocess(self.text)):
+        sentence = word_tokenize(self.preprocess(self.text))
+        for i in self.underline:
             try:
-                homophones = self.check_homophones(word)
+                homophones = self.check_homophones(sentence[i])
             except:
                 continue
             if homophones[0] == True:
                 num_of_homophones += 1
+        # for word in word_tokenize(self.preprocess(self.text)):
+        #     try:
+        #         homophones = self.check_homophones(word)
+        #     except:
+        #         continue
+        #     if homophones[0] == True:
+        #         num_of_homophones += 1
         return num_of_homophones
 
     def syllable_count(self, word):
@@ -122,16 +131,25 @@ class FeatureExtraction():
         data_path = path + '/data/lemmas_60k_words.xlsx'
         df = pd.read_excel(data_path, sheet_name='wordfrequency', usecols=['word', 'freq']).astype(str)
         dictionary = df.word.to_list()
-        freq_dict = df.freq.to_list()
+        freq_dict = [int(item) for item in df.freq.to_list()]
 
         difficult_words = []
         for word in word_tokenize(self.preprocess(self.text)):
             freq = self.word_frequency(word, dictionary, freq_dict)
             if freq != 0:
-                difficult_words.append({'word': word, 'frequency': freq})
+                print(self.normalize(freq, min(freq_dict), max(freq_dict)))
+                difficult_words.append({'word': word, 'frequency': self.normalize(freq, 100, max(freq_dict))})
         
         return self.sort_difficult_vocab(difficult_words)
 
     def sort_difficult_vocab(self, difficult_words):
         sorted_list = sorted(difficult_words, key=lambda x: int(x["frequency"]), reverse=False)
-        return sorted_list[:3]
+        sum_freq = 0
+        for word_freq in sorted_list:
+            sum_freq += word_freq['frequency']
+        sum_freq = sum_freq/len(sorted_list)
+        return sum_freq
+
+    def normalize(self, value, min_value, max_value):
+        return (value - min_value) / (max_value - min_value)
+    
