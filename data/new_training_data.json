@@ -1,1 +1,820 @@
-{"data": [{"question_text": "These television are all to expensive for we to buy at this time, but perhaps we will return later", "tense_type": "future", "underlined_postags": [["these", "DT"], ["to", "TO"], ["we", "PRP"], ["this", "DT"]], "irregular_verbs": 0, "regular_verbs": 0, "homophones": 10, "conjunctions": 1, "flesch_reading_ease": 67.32894736842107, "difficult_vocab": [{"word": "expensive", "frequency": "604"}, {"word": "return", "frequency": "697"}, {"word": "buy", "frequency": "965"}]}, {"question_text": "They only teachers who were required to attend the meeting were George, Betty, Jill, and me", "tense_type": "past", "underlined_postags": [["they", "PRP"], ["who", "WP"], ["to", "TO"], ["and", "CC"]], "irregular_verbs": 1, "regular_verbs": 2, "homophones": 6, "conjunctions": 1, "flesch_reading_ease": 68.9825, "difficult_vocab": [{"word": "betty", "frequency": 0}, {"word": "jill", "frequency": 0}, {"word": "attend", "frequency": "322"}]}, {"question_text": "Us students would rather not attend night classes in the summer, but we of ten have to", "tense_type": "present", "underlined_postags": [["us", "PRP"], ["would", "MD"], ["we", "PRP"], ["ten", "NNS"]], "irregular_verbs": 0, "regular_verbs": 0, "homophones": 11, "conjunctions": 1, "flesch_reading_ease": 75.12117647058825, "difficult_vocab": [{"word": "attend", "frequency": "322"}, {"word": "classes", "frequency": "789"}, {"word": "ten", "frequency": "1326"}]}, {"question_text": "It was him who came running into the classroom with the news", "tense_type": "past", "underlined_postags": [["him", "PRP"], ["who", "WP"], ["into", "IN"], ["the", "DT"]], "irregular_verbs": 0, "regular_verbs": 2, "homophones": 5, "conjunctions": 0, "flesch_reading_ease": 88.905, "difficult_vocab": [{"word": "classroom", "frequency": "311"}, {"word": "running", "frequency": "737"}, {"word": "news", "frequency": "1739"}]}, {"question_text": "The test administrator ordered we not to open our books until he told us to do so", "tense_type": "past", "underlined_postags": [["test", "NN"], ["we", "PRP"], ["not", "RB"], ["told", "VBD"]], "irregular_verbs": 0, "regular_verbs": 2, "homophones": 10, "conjunctions": 0, "flesch_reading_ease": 60.19176470588238, "difficult_vocab": [{"word": "administrator", "frequency": 0}, {"word": "ordered", "frequency": "179"}, {"word": "told", "frequency": "784"}]}]}
+{
+    "data": [
+        {
+            "question_text": "These television are all to expensive for we to buy at this time, but perhaps we will return later",
+            "tense_type": "future",
+            "underlined_postags": [
+                [
+                    "these",
+                    "DT"
+                ],
+                [
+                    "to",
+                    "TO"
+                ],
+                [
+                    "we",
+                    "PRP"
+                ],
+                [
+                    "this",
+                    "DT"
+                ]
+            ],
+            "irregular_verbs": 0,
+            "regular_verbs": 0,
+            "homophones": 10,
+            "conjunctions": 1,
+            "flesch_reading_ease": 67.32894736842107,
+            "difficult_vocab": [
+                {
+                    "word": "expensive",
+                    "frequency": "604"
+                },
+                {
+                    "word": "return",
+                    "frequency": "697"
+                },
+                {
+                    "word": "buy",
+                    "frequency": "965"
+                }
+            ]
+        },
+        {
+            "question_text": "They only teachers who were required to attend the meeting were George, Betty, Jill, and me",
+            "tense_type": "past",
+            "underlined_postags": [
+                [
+                    "they",
+                    "PRP"
+                ],
+                [
+                    "who",
+                    "WP"
+                ],
+                [
+                    "to",
+                    "TO"
+                ],
+                [
+                    "and",
+                    "CC"
+                ]
+            ],
+            "irregular_verbs": 1,
+            "regular_verbs": 2,
+            "homophones": 6,
+            "conjunctions": 1,
+            "flesch_reading_ease": 68.9825,
+            "difficult_vocab": [
+                {
+                    "word": "attend",
+                    "frequency": "322"
+                },
+                {
+                    "word": "george",
+                    "frequency": "1037"
+                },
+                {
+                    "word": "required",
+                    "frequency": "1178"
+                }
+            ]
+        },
+        {
+            "question_text": "Us students would rather not attend night classes in the summer, but we of ten have to",
+            "tense_type": "present",
+            "underlined_postags": [
+                [
+                    "us",
+                    "PRP"
+                ],
+                [
+                    "would",
+                    "MD"
+                ],
+                [
+                    "we",
+                    "PRP"
+                ],
+                [
+                    "ten",
+                    "NNS"
+                ]
+            ],
+            "irregular_verbs": 0,
+            "regular_verbs": 0,
+            "homophones": 11,
+            "conjunctions": 1,
+            "flesch_reading_ease": 75.12117647058825,
+            "difficult_vocab": [
+                {
+                    "word": "attend",
+                    "frequency": "322"
+                },
+                {
+                    "word": "classes",
+                    "frequency": "789"
+                },
+                {
+                    "word": "ten",
+                    "frequency": "1326"
+                }
+            ]
+        },
+        {
+            "question_text": "It was him who came running into the classroom with the news",
+            "tense_type": "past",
+            "underlined_postags": [
+                [
+                    "him",
+                    "PRP"
+                ],
+                [
+                    "who",
+                    "WP"
+                ],
+                [
+                    "into",
+                    "IN"
+                ],
+                [
+                    "the",
+                    "DT"
+                ]
+            ],
+            "irregular_verbs": 0,
+            "regular_verbs": 2,
+            "homophones": 5,
+            "conjunctions": 0,
+            "flesch_reading_ease": 88.905,
+            "difficult_vocab": [
+                {
+                    "word": "classroom",
+                    "frequency": "311"
+                },
+                {
+                    "word": "running",
+                    "frequency": "737"
+                },
+                {
+                    "word": "news",
+                    "frequency": "1739"
+                }
+            ]
+        },
+        {
+            "question_text": "The test administrator ordered we not to open our books until he told us to do so",
+            "tense_type": "past",
+            "underlined_postags": [
+                [
+                    "test",
+                    "NN"
+                ],
+                [
+                    "we",
+                    "PRP"
+                ],
+                [
+                    "not",
+                    "RB"
+                ],
+                [
+                    "told",
+                    "VBD"
+                ]
+            ],
+            "irregular_verbs": 0,
+            "regular_verbs": 2,
+            "homophones": 10,
+            "conjunctions": 0,
+            "flesch_reading_ease": 60.19176470588238,
+            "difficult_vocab": [
+                {
+                    "word": "ordered",
+                    "frequency": "179"
+                },
+                {
+                    "word": "told",
+                    "frequency": "784"
+                },
+                {
+                    "word": "test",
+                    "frequency": "1147"
+                }
+            ]
+        },
+        {
+            "question_text": "After she had bought herself a new automobile, she sold her bicycle",
+            "tense_type": "past",
+            "underlined_postags": [
+                [
+                    "had",
+                    "VBD"
+                ],
+                [
+                    "herself",
+                    "PRP"
+                ],
+                [
+                    "sold",
+                    "VBD"
+                ],
+                [
+                    "her",
+                    "PRP"
+                ]
+            ],
+            "irregular_verbs": 1,
+            "regular_verbs": 2,
+            "homophones": 5,
+            "conjunctions": 0,
+            "flesch_reading_ease": 60.70500000000001,
+            "difficult_vocab": [
+                {
+                    "word": "bought",
+                    "frequency": "355"
+                },
+                {
+                    "word": "herself",
+                    "frequency": "420"
+                },
+                {
+                    "word": "sold",
+                    "frequency": "620"
+                }
+            ]
+        },
+        {
+            "question_text": "Because Sam and Michelle had done all of the work theirselves, they were unwilling to give the results to Joan",
+            "tense_type": "past",
+            "underlined_postags": [
+                [
+                    "because",
+                    "IN"
+                ],
+                [
+                    "done",
+                    "VBN"
+                ],
+                [
+                    "they",
+                    "PRP"
+                ],
+                [
+                    "to",
+                    "TO"
+                ]
+            ],
+            "irregular_verbs": 1,
+            "regular_verbs": 2,
+            "homophones": 9,
+            "conjunctions": 1,
+            "flesch_reading_ease": 76.55500000000004,
+            "difficult_vocab": [
+                {
+                    "word": "unwilling",
+                    "frequency": "107"
+                },
+                {
+                    "word": "joan",
+                    "frequency": "111"
+                },
+                {
+                    "word": "sam",
+                    "frequency": "173"
+                }
+            ]
+        },
+        {
+            "question_text": "Writers and media personnel sell theirselves best by the impression given in their verbal expression",
+            "tense_type": "past",
+            "underlined_postags": [
+                [
+                    "personnel",
+                    "NNS"
+                ],
+                [
+                    "theirselves",
+                    "NNS"
+                ],
+                [
+                    "by",
+                    "IN"
+                ],
+                [
+                    "expression",
+                    "NN"
+                ]
+            ],
+            "irregular_verbs": 1,
+            "regular_verbs": 0,
+            "homophones": 7,
+            "conjunctions": 1,
+            "flesch_reading_ease": 39.33000000000001,
+            "difficult_vocab": [
+                {
+                    "word": "impression",
+                    "frequency": "379"
+                },
+                {
+                    "word": "personnel",
+                    "frequency": "390"
+                },
+                {
+                    "word": "writers",
+                    "frequency": "570"
+                }
+            ]
+        },
+        {
+            "question_text": "For along time, this officials have been known throughout the country as politcal bosses and law onforcers",
+            "tense_type": "past",
+            "underlined_postags": [
+                [
+                    "officials",
+                    "NNS"
+                ],
+                [
+                    "been",
+                    "VBN"
+                ],
+                [
+                    "as",
+                    "IN"
+                ],
+                [
+                    "law",
+                    "NN"
+                ]
+            ],
+            "irregular_verbs": 2,
+            "regular_verbs": 0,
+            "homophones": 5,
+            "conjunctions": 1,
+            "flesch_reading_ease": 75.12117647058825,
+            "difficult_vocab": [
+                {
+                    "word": "officials",
+                    "frequency": "745"
+                },
+                {
+                    "word": "along",
+                    "frequency": "825"
+                },
+                {
+                    "word": "throughout",
+                    "frequency": "1767"
+                }
+            ]
+        },
+        {
+            "question_text": "Those homework that your teacher assigned is due on Tuesday unless you have made prior arrangements to turn it in late",
+            "tense_type": "past",
+            "underlined_postags": [
+                [
+                    "those",
+                    "DT"
+                ],
+                [
+                    "assigned",
+                    "VBN"
+                ],
+                [
+                    "on",
+                    "IN"
+                ],
+                [
+                    "have",
+                    "VBP"
+                ]
+            ],
+            "irregular_verbs": 2,
+            "regular_verbs": 0,
+            "homophones": 8,
+            "conjunctions": 0,
+            "flesch_reading_ease": 68.69142857142859,
+            "difficult_vocab": [
+                {
+                    "word": "prior",
+                    "frequency": "126"
+                },
+                {
+                    "word": "assigned",
+                    "frequency": "129"
+                },
+                {
+                    "word": "tuesday",
+                    "frequency": "304"
+                }
+            ]
+        },
+        {
+            "question_text": "The man, of whom the red car is parked in front of our house, is a prominent physician in this town",
+            "tense_type": "past",
+            "underlined_postags": [
+                [
+                    "whom",
+                    "WP"
+                ],
+                [
+                    "in",
+                    "IN"
+                ],
+                [
+                    "our",
+                    "PRP$"
+                ],
+                [
+                    "a",
+                    "DT"
+                ]
+            ],
+            "irregular_verbs": 1,
+            "regular_verbs": 0,
+            "homophones": 6,
+            "conjunctions": 0,
+            "flesch_reading_ease": 80.77714285714288,
+            "difficult_vocab": [
+                {
+                    "word": "prominent",
+                    "frequency": "198"
+                },
+                {
+                    "word": "front",
+                    "frequency": "422"
+                },
+                {
+                    "word": "red",
+                    "frequency": "823"
+                }
+            ]
+        },
+        {
+            "question_text": "He is the only candidate who the faculty members voted not to retain on the list of eligible replacements for Professor Kotey",
+            "tense_type": "past",
+            "underlined_postags": [
+                [
+                    "candidate",
+                    "NN"
+                ],
+                [
+                    "the",
+                    "DT"
+                ],
+                [
+                    "to",
+                    "TO"
+                ],
+                [
+                    "the",
+                    "DT"
+                ]
+            ],
+            "irregular_verbs": 0,
+            "regular_verbs": 1,
+            "homophones": 8,
+            "conjunctions": 0,
+            "flesch_reading_ease": 42.223181818181814,
+            "difficult_vocab": [
+                {
+                    "word": "voted",
+                    "frequency": "107"
+                },
+                {
+                    "word": "faculty",
+                    "frequency": "169"
+                },
+                {
+                    "word": "eligible",
+                    "frequency": "201"
+                }
+            ]
+        },
+        {
+            "question_text": "This class, that is a prerequisite for microbiology, is so difficult that I would rather drop it",
+            "tense_type": "present",
+            "underlined_postags": [
+                [
+                    "that",
+                    "WDT"
+                ],
+                [
+                    "prerequisite",
+                    "NN"
+                ],
+                [
+                    "so",
+                    "RB"
+                ],
+                [
+                    "would",
+                    "MD"
+                ]
+            ],
+            "irregular_verbs": 0,
+            "regular_verbs": 0,
+            "homophones": 6,
+            "conjunctions": 0,
+            "flesch_reading_ease": 50.2388235294118,
+            "difficult_vocab": [
+                {
+                    "word": "drop",
+                    "frequency": "171"
+                },
+                {
+                    "word": "rather",
+                    "frequency": "1913"
+                },
+                {
+                    "word": "class",
+                    "frequency": "2212"
+                }
+            ]
+        },
+        {
+            "question_text": "Dr. Harder, which is the professor for this class, will be abbsent this week because of illness.",
+            "tense_type": "future",
+            "underlined_postags": [
+                [
+                    "which",
+                    "WDT"
+                ],
+                [
+                    "will",
+                    "MD"
+                ],
+                [
+                    "this",
+                    "DT"
+                ],
+                [
+                    "of",
+                    "IN"
+                ]
+            ],
+            "irregular_verbs": 0,
+            "regular_verbs": 0,
+            "homophones": 8,
+            "conjunctions": 0,
+            "flesch_reading_ease": 83.74867647058825,
+            "difficult_vocab": [
+                {
+                    "word": "harder",
+                    "frequency": "157"
+                },
+                {
+                    "word": "professor",
+                    "frequency": "356"
+                },
+                {
+                    "word": "illness",
+                    "frequency": "398"
+                }
+            ]
+        },
+        {
+            "question_text": "Angie's billingual ability and previous experience were the qualities that which helped her get the job over all the other candidates",
+            "tense_type": "past",
+            "underlined_postags": [
+                [
+                    "were",
+                    "VBD"
+                ],
+                [
+                    "that",
+                    "WDT"
+                ],
+                [
+                    "helped",
+                    "VBD"
+                ],
+                [
+                    "the",
+                    "DT"
+                ]
+            ],
+            "irregular_verbs": 0,
+            "regular_verbs": 2,
+            "homophones": 7,
+            "conjunctions": 1,
+            "flesch_reading_ease": 42.223181818181814,
+            "difficult_vocab": [
+                {
+                    "word": "qualities",
+                    "frequency": "327"
+                },
+                {
+                    "word": "helped",
+                    "frequency": "350"
+                },
+                {
+                    "word": "candidates",
+                    "frequency": "442"
+                }
+            ]
+        },
+        {
+            "question_text": "My book is different than yours because mine has a vocabulary section at the bottom of each page, and yours has one in the back",
+            "tense_type": "present",
+            "underlined_postags": [
+                [
+                    "than",
+                    "IN"
+                ],
+                [
+                    "yours",
+                    "NNS"
+                ],
+                [
+                    "at",
+                    "IN"
+                ],
+                [
+                    "yours",
+                    "PRP"
+                ]
+            ],
+            "irregular_verbs": 0,
+            "regular_verbs": 0,
+            "homophones": 4,
+            "conjunctions": 1,
+            "flesch_reading_ease": 66.40400000000001,
+            "difficult_vocab": [
+                {
+                    "word": "mine",
+                    "frequency": "199"
+                },
+                {
+                    "word": "bottom",
+                    "frequency": "233"
+                },
+                {
+                    "word": "yours",
+                    "frequency": "295"
+                }
+            ]
+        },
+        {
+            "question_text": "John decided to buy in the morning a new car, but in the afternoon he changed his mind",
+            "tense_type": "past",
+            "underlined_postags": [
+                [
+                    "buy",
+                    "VB"
+                ],
+                [
+                    "in",
+                    "IN"
+                ],
+                [
+                    "his",
+                    "PRP$"
+                ]
+            ],
+            "irregular_verbs": 0,
+            "regular_verbs": 2,
+            "homophones": 9,
+            "conjunctions": 1,
+            "flesch_reading_ease": 80.46500000000002,
+            "difficult_vocab": [
+                {
+                    "word": "afternoon",
+                    "frequency": "468"
+                },
+                {
+                    "word": "decided",
+                    "frequency": "580"
+                },
+                {
+                    "word": "changed",
+                    "frequency": "644"
+                }
+            ]
+        },
+        {
+            "question_text": "Having multiple sclerosis has diminished Mr Wilson\u2019s physical condition,\nbut his ability to maintain a positive attitude and continue working is an\ninspiration",
+            "tense_type": "past",
+            "underlined_postags": [
+                [
+                    "having",
+                    "VBG"
+                ],
+                [
+                    "diminished",
+                    "VBN"
+                ],
+                [
+                    "condition",
+                    "NN"
+                ],
+                [
+                    "and",
+                    "CC"
+                ]
+            ],
+            "irregular_verbs": 1,
+            "regular_verbs": 0,
+            "homophones": 8,
+            "conjunctions": 2,
+            "flesch_reading_ease": 5.492000000000019,
+            "difficult_vocab": [
+                {
+                    "word": "inspiration",
+                    "frequency": "209"
+                },
+                {
+                    "word": "wilson",
+                    "frequency": "343"
+                },
+                {
+                    "word": "s",
+                    "frequency": "392"
+                }
+            ]
+        },
+        {
+            "question_text": "The huge increase in popularity of specialty coffees has contributed to the success of Starbucks, Barney\u2019s and other coffee purveyors",
+            "tense_type": "past",
+            "underlined_postags": [
+                [
+                    "huge",
+                    "JJ"
+                ],
+                [
+                    "contributed",
+                    "VBN"
+                ],
+                [
+                    "success",
+                    "NN"
+                ],
+                [
+                    "\u2019",
+                    "JJ"
+                ]
+            ],
+            "irregular_verbs": 1,
+            "regular_verbs": 0,
+            "homophones": 7,
+            "conjunctions": 1,
+            "flesch_reading_ease": 30.686818181818182,
+            "difficult_vocab": [
+                {
+                    "word": "contributed",
+                    "frequency": "132"
+                },
+                {
+                    "word": "popularity",
+                    "frequency": "183"
+                },
+                {
+                    "word": "coffee",
+                    "frequency": "273"
+                }
+            ]
+        },
+        {
+            "question_text": "After it had concluded work on the budget, the legislature adjourned until the\nnext session",
+            "tense_type": "past",
+            "underlined_postags": [
+                [
+                    "concluded",
+                    "VBN"
+                ],
+                [
+                    "the",
+                    "DT"
+                ],
+                [
+                    "adjourned",
+                    "VBD"
+                ],
+                [
+                    "until",
+                    "IN"
+                ]
+            ],
+            "irregular_verbs": 1,
+            "regular_verbs": 2,
+            "homophones": 2,
+            "conjunctions": 0,
+            "flesch_reading_ease": 50.610000000000014,
+            "difficult_vocab": [
+                {
+                    "word": "legislature",
+                    "frequency": "105"
+                },
+                {
+                    "word": "concluded",
+                    "frequency": "220"
+                },
+                {
+                    "word": "session",
+                    "frequency": "533"
+                }
+            ]
+        }
+    ]
+}
