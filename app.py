@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from src.utils.db import db
 # Import controllers
 from src.controllers.recommendation import Recommendation
@@ -25,7 +25,8 @@ def demo_extract_features_pipeline():
 
 @app.route("/demo/database", methods=['GET'])
 def demo_pipeline_database():
-    pipeline = demo_extract(5)
+    n_question = int(request.form['max'])
+    pipeline = demo_extract(n_question, shuffle=True)
     return {'msg': pipeline}
 
 # adding routes

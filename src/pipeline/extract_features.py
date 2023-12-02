@@ -21,6 +21,6 @@ def extract_features(text, underline):
     response['flesch_reading_ease'] = question_characteristics.flesch_reading_ease()
 
     print('Calculating vocabulary difficulty...')
-    response['difficult_vocab'] = question_characteristics.difficult_vocab()
+    response['vocabulary_difficulty_score'] = question_characteristics.difficult_vocab()
 
     return response
