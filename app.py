@@ -2,8 +2,7 @@ from flask import Flask, request
 from src.utils.db import db
 # Import controllers
 from src.controllers.recommendation import Recommendation
-from src.pipeline.extract_features import extract_features
-from src.utils.helper_functions import demo_extract
+from src.pipeline.extract_features import extract_features, extract_from_file
 
 app = Flask(__name__)
 app.config.from_object('src.utils.setting.Config')
@@ -23,11 +22,13 @@ def demo_extract_features_pipeline():
     else:
         return {'msg': 'there is an error!'}
 
-@app.route("/demo/database", methods=['GET'])
-def demo_pipeline_database():
-    n_question = int(request.form['max'])
-    pipeline = demo_extract(n_question, shuffle=True)
-    return {'msg': pipeline}
+@app.route("/extract-feature/file", methods=['POST'])
+def feature_extraction_file_pipeline():
+    filename = request.form['filename']
+    extract = extract_from_file(filename)
+    if extract:
+        return {'msg': 'Success'}
+    return {'msg': 'Failed'}
 
 # adding routes
 app.add_url_rule('/recommendation/<int:id>', view_func=Recommendation.recommendation, methods=['GET',])
