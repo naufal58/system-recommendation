@@ -8,6 +8,8 @@ class FeatureExtraction():
     def __init__(self, text, underline):
         self.text = text
         self.underline = underline
+        self.pronouncing_dict = cmudict.dict()
+        self.entries = cmudict.entries()
 
     def preprocess(self, text):
         return text.replace('.', '').replace(',', '').lower()
@@ -29,11 +31,9 @@ class FeatureExtraction():
         return underlined_postags, len(irregular_verbs), len(regular_verbs)
 
     def check_homophones(self, word):
-        pronouncing_dict = cmudict.dict()
-        entries = cmudict.entries()
         list_of_homophones = []
-        for i in entries:
-            if pronouncing_dict[word][0] == i[1] and len(list_of_homophones) <= 1:
+        for i in self.entries:
+            if self.pronouncing_dict[word][0] == i[1] and len(list_of_homophones) <= 1 and i[0] != word:
                 list_of_homophones.append(i)
                 return True, list_of_homophones
         return False, []
@@ -50,24 +50,20 @@ class FeatureExtraction():
                 continue
             if homophones[0] == True:
                 num_of_homophones += 1
-        # for word in word_tokenize(self.preprocess(self.text)):
-        #     try:
-        #         homophones = self.check_homophones(word)
-        #     except:
-        #         continue
-        #     if homophones[0] == True:
-        #         num_of_homophones += 1
         return num_of_homophones
-
+        
     def syllable_count(self, word):
-        d = cmudict.dict()
-        # Check if the word is in the dictionary
-        if word.lower() in d:
-            # Use the first pronunciation and count the syllables
-            return max([len(list(y for y in x if y[-1].isdigit())) for x in d[word.lower()]])
-        else:
-            # If the word is not in the dictionary, return a default value
-            return 1
+        vowels = "aeiouy"
+        count = 0
+
+        for i in range(len(word)):
+            if word[i] in vowels and (i == len(word) - 1 or word[i + 1] not in vowels):
+                count += 1
+
+        if word.endswith('e') and count > 1:
+            count -= 1
+
+        return max(1, count)
 
     def flesch_reading_ease(self):
         words = word_tokenize(self.preprocess(self.text))
@@ -137,7 +133,6 @@ class FeatureExtraction():
         for word in word_tokenize(self.preprocess(self.text)):
             freq = self.word_frequency(word, dictionary, freq_dict)
             if freq != 0:
-                print(self.normalize(freq, min(freq_dict), max(freq_dict)))
                 difficult_words.append({'word': word, 'frequency': self.normalize(freq, 100, max(freq_dict))})
         
         return self.sort_difficult_vocab(difficult_words)
