@@ -1,4 +1,5 @@
 from src.controllers.feature_extraction import FeatureExtraction
+from src.utils.helper_functions import get_training_data, preprocess_underlined, set_training_data
 
 def extract_features(text, underline):
     question_characteristics = FeatureExtraction(text, underline)
@@ -24,3 +25,12 @@ def extract_features(text, underline):
     response['vocabulary_difficulty_score'] = question_characteristics.difficult_vocab()
 
     return response
+
+def extract_from_file(filename):
+    training_data = get_training_data(filename)
+    data_extract = []
+    for data in training_data:
+        data_extract.append(extract_features(data['soal'], preprocess_underlined(data['underline'])))
+    set_training_data({'data': data_extract})
+
+    return {'msg': f'Data questions from {filename} file has been extracted.'}
