@@ -15,6 +15,23 @@ class DataPreprocess():
 
         return True
     
+    def convert_list_to_string(self, input_list):
+        result_string = ""
+        
+        for sublist in input_list:
+            if isinstance(sublist, list):
+                if len(sublist) == 2:
+                    result_string += f"{sublist[0]}-{sublist[1]},"
+                else:
+                    result_string += ",".join(map(str, sublist))
+                    result_string += ","
+            else:
+                result_string += f"{sublist},"
+        
+        result_string = result_string.rstrip(',')
+        
+        return result_string
+
     def get_underlines(self):
         underline = []
         question = word_tokenize(self.data['soal'].replace('.', '').replace(',', '').lower())
@@ -25,7 +42,7 @@ class DataPreprocess():
             if len(temp_underline) == 1:
                 temp_underline = temp_underline[0]
             underline.append(temp_underline)
-        self.data['underline'] = underline
+        self.data['underline'] = self.convert_list_to_string(underline)
 
         return True
     
