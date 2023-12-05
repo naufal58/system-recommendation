@@ -61,28 +61,20 @@ class DataPreprocess():
         return underline, index
     
     def check_answer_result(self):
+        options = ['A', 'B', 'C', 'D']
+
+        for opt in options:
+            temp = 'opt_' + opt.lower()
+            if self.data['answer'] == opt or self.data['answer'] == self.data[temp]:
+                self.data['answer'] = [opt, self.data[temp]]
+                
+            if self.data['key_answer'] == opt or self.data['key_answer'] == self.data[temp]:
+                self.data['key_answer'] = [opt, self.data[temp]]
+
         if self.data['answer'] == self.data['key_answer']:
             self.data['result'] = 1
         else:
             self.data['result'] = 0
-
-        if self.data['answer'] == 'A':
-            self.data['answer'] = ['A', self.data['opt_a']]
-        elif self.data['answer'] == 'B':
-            self.data['answer'] = ['B', self.data['opt_b']]
-        elif self.data['answer'] == 'C':
-            self.data['answer'] = ['C', self.data['opt_c']]
-        elif self.data['answer'] == 'D':
-            self.data['answer'] = ['D', self.data['opt_d']]
-
-        if self.data['key_answer'] == 'A':
-            self.data['key_answer'] = ['A', self.data['opt_a']]
-        elif self.data['key_answer'] == 'B':
-            self.data['key_answer'] = ['B', self.data['opt_b']]
-        elif self.data['key_answer'] == 'C':
-            self.data['key_answer'] = ['C', self.data['opt_c']]
-        elif self.data['key_answer'] == 'D':
-            self.data['key_answer'] = ['D', self.data['opt_d']]
 
         return True
 
