@@ -7,7 +7,7 @@ class Discretization():
         return float((value - min_value) / (max_value - min_value))
 
     def normalize_numeric(self):
-        attributes = ['irregular_verbs', 'regular_verbs', 'homophones', 'conjunctions', 'flesch_reading_ease']
+        attributes = ['conjunctions', 'flesch_reading_ease']
         for i in attributes:
             value = [temp[i] for temp in self.data]
             for item in self.data:
@@ -15,13 +15,10 @@ class Discretization():
 
         return True
     
-    def discrete_categorical(self):
+    def remove_correct_answers(self):
+        wrong_answers = []
         for item in self.data:
-            if item['tense_type'] == 'future':
-                item['tense_type'] = 0.0
-            elif item['tense_type'] == 'past':
-                item['tense_type'] = 1.0
-            else:
-                item['tense_type'] = 2.0
-
-        return True
+            if item['result'] == 0:
+                del item['result']
+                wrong_answers.append(item)
+        return wrong_answers
