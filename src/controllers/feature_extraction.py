@@ -5,14 +5,16 @@ import pandas as pd
 import os
 
 class FeatureExtraction():
-    def __init__(self, text, underline):
+    def __init__(self, text, underline, data):
         self.text = text
         self.underline = underline
         self.pronouncing_dict = cmudict.dict()
         self.entries = cmudict.entries()
+        self.data = data
 
     def preprocess(self, text):
-        return text.replace('.', '').replace(',', '').lower()
+        preprocess = text.replace('.', '').replace(',', '').lower()
+        return preprocess
 
     def tag_features(self):
         pos = pos_tag(word_tokenize(self.preprocess(self.text)))
@@ -27,7 +29,6 @@ class FeatureExtraction():
                 irregular_verbs.append(pos[i])
             elif pos[i][1] == 'VBD': ## Regular verbs 
                 regular_verbs.append(pos[i])
-
         return underlined_postags, len(irregular_verbs), len(regular_verbs)
 
     def check_homophones(self, word):
@@ -39,18 +40,14 @@ class FeatureExtraction():
         return False, []
 
     def count_homophones(self):
-        """Only check the homophones from the options of the question's answer.
+        """Only check the homophones from the question's answer and answer key.
         """
-        num_of_homophones = 0
-        sentence = word_tokenize(self.preprocess(self.text))
-        for i in self.underline:
-            try:
-                homophones = self.check_homophones(sentence[i])
-            except:
-                continue
-            if homophones[0] == True:
-                num_of_homophones += 1
-        return num_of_homophones
+        try:
+            homophones_ans_key = self.check_homophones(self.data['key_answer'][1])
+            homophones_ans = self.check_homophones(self.data['answer'][1])
+        except:
+            return False, False
+        return [homophones_ans_key[0], homophones_ans[0]]
         
     def syllable_count(self, word):
         vowels = "aeiouy"
@@ -142,9 +139,62 @@ class FeatureExtraction():
         sum_freq = 0
         for word_freq in sorted_list:
             sum_freq += word_freq['frequency']
-        sum_freq = sum_freq/len(sorted_list)
-        return sum_freq
+        sum_freq = format(sum_freq/len(sorted_list), '.3f')
+        return float(sum_freq)
 
     def normalize(self, value, min_value, max_value):
         return (value - min_value) / (max_value - min_value)
+    
+    def error_type(self):
+        verbs = ['VBG', 'VBN', 'VBD', 'VBZ', 'VBP', 'VB']
+        pos = pos_tag(word_tokenize(self.preprocess(self.text)))
+        key_answer_pos = pos[self.data['key_answer'][2]]
+        if key_answer_pos[1] == 'IN':
+            error_type = 'preprosition usage'
+        elif key_answer_pos[1] == 'PRP$' or key_answer_pos[1] == 'PRP':
+            error_type = 'pronoun usage'
+        elif key_answer_pos[1] in verbs:
+            error_type = 'tenses types'
+        elif key_answer_pos[1] == 'CC':
+            error_type = 'coherence'
+        elif key_answer_pos[1] == 'DT':
+            error_type = 'determiner'
+        elif key_answer_pos[1].startswith("W"):
+            error_type = '5w + 1h'
+        else:
+            print(key_answer_pos)
+            error_type = 'other'
+        return error_type
+    
+    # def error_type(self):
+    #     pos = pos_tag(word_tokenize(self.preprocess(self.text)))
+    #     key_answer_pos = pos[self.data['key_answer'][2]]
+    #     if key_answer_pos[1] == 'IN':
+    #         error_type = 'preprosition usage'
+    #     elif key_answer_pos[1] == 'PRP$' or key_answer_pos[1] == 'PRP':
+    #         error_type = 'pronoun usage'
+    #     elif key_answer_pos[1] == 'VBG':
+    #         error_type = 'present participle'
+    #     elif key_answer_pos[1] == 'VBN':
+    #         error_type = 'past participle'
+    #     elif key_answer_pos[1] == 'VBD':
+    #         error_type = 'past tense'
+    #     elif key_answer_pos[1] == 'VBZ' or key_answer_pos[1] == 'VBP':
+    #         error_type = '3rd person singular present'
+    #     elif key_answer_pos[1] == 'CC':
+    #         error_type = 'coherence'
+    #     elif key_answer_pos[1] == 'DT':
+    #         error_type = 'determiner'
+    #     elif key_answer_pos[1].startswith("W"):
+    #         error_type = '5w + 1h'
+    #     else:
+    #         print(key_answer_pos)
+    #         error_type = 'other'
+    #     return error_type
+    
+    def get_key_index(self):
+        options = ['A', 'B', 'C', 'D']
+        for i in range(len(options)):
+            if self.data['key_answer'][0] == options[i]:
+                self.data['key_answer'].append(self.underline[i])
     

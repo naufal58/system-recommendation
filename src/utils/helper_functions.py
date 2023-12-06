@@ -17,10 +17,10 @@ def get_training_data(filename = "training_data"):
         training_data = json.load(training_file)
     return training_data
 
-def set_training_data(data):
+def set_training_data(data, filename):
     path = os.getcwd()
-    filename = random_string(5) + ".json"
-    data_path = path + "/data/" + filename
+    suffix = "_extracted.json"
+    data_path = path + "/data/" + filename + suffix
 
     try:
         with open(data_path, 'w') as json_file:
@@ -34,3 +34,10 @@ def preprocess_underlined(underline):
     for i in underline.split(','):
         underline_list.append(int(i.split('-')[0]))
     return underline_list
+
+def has_answer_only(training_data):
+    new_data = []
+    for data in training_data:
+        if data['answer'] != None:
+            new_data.append(data)
+    return new_data
