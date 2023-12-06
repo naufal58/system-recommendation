@@ -142,8 +142,8 @@ class FeatureExtraction():
         sum_freq = 0
         for word_freq in sorted_list:
             sum_freq += word_freq['frequency']
-        sum_freq = sum_freq/len(sorted_list)
-        return sum_freq
+        sum_freq = format(sum_freq/len(sorted_list), '.3f')
+        return float(sum_freq)
 
     def normalize(self, value, min_value, max_value):
         return (value - min_value) / (max_value - min_value)
