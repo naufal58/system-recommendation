@@ -6,6 +6,6 @@ def start(filename):
     feature_data = get_training_data(filename)
     discrete_data = Discretization(feature_data['data'])
     discrete_data.normalize_numeric()
-    # discrete_data.discrete_categorical()
-    set_training_data(feature_data, filename)
+    new_data = discrete_data.remove_correct_answers()
+    set_training_data(new_data, filename)
     return True
