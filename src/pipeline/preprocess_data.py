@@ -17,7 +17,7 @@ def set_training_data(filename, data):
         json.dump(data, f, indent=4)
     return True
 
-def start(filename):
+def preprocess_pipeline(filename):
     training_data = []
     if convert_to_json(filename):
         data_files = get_training_data(filename)
