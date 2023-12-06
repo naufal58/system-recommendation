@@ -17,10 +17,10 @@ def get_training_data(filename = "training_data"):
         training_data = json.load(training_file)
     return training_data
 
-def set_training_data(data):
+def set_training_data(data, filename):
     path = os.getcwd()
-    filename = random_string(5) + ".json"
-    data_path = path + "/data/" + filename
+    suffix = random_string(5) + ".json"
+    data_path = path + "/data/" + filename + suffix
 
     try:
         with open(data_path, 'w') as json_file:
