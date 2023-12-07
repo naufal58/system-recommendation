@@ -32,4 +32,5 @@ instance/config.py
 # Ignore migration files for databases (if you're using Flask-Migrate)
 migrations/
 
-data/
+data/*.json
+data/*.csv
