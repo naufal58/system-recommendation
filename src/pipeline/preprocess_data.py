@@ -17,7 +17,7 @@ def set_training_data(filename, data):
         json.dump(data, f, indent=4)
     return True
 
-def preprocess_pipeline(filename):
+def preprocess_pipeline(filename, full_pipeline=False):
     training_data = []
     if convert_to_json(filename):
         data_files = get_training_data(filename)
@@ -27,6 +27,8 @@ def preprocess_pipeline(filename):
             processed_data.get_underlines()
             processed_data.check_answer_result()
             training_data.append(processed_data.get_data())
-        if set_training_data(filename, training_data):
+        if full_pipeline:
+            return training_data
+        elif set_training_data(filename, training_data):
             return True
     return False

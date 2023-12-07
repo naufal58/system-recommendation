@@ -39,3 +39,9 @@ def extract_from_file(filename):
     set_training_data({'data': data_extract}, filename)
     print(f'Data questions from {filename} file has been extracted.')
     return {'msg': f'Data questions from {filename} file has been extracted.'}
+
+def full_extraction_pipeline(training_data):
+    data_extract = []
+    for data in training_data:
+        data_extract.append(extract_features(data['soal'], preprocess_underlined(data['underline']), data, essential_features_only=True))
+    return data_extract
