@@ -19,7 +19,7 @@ def get_training_data(filename = "training_data"):
 
 def set_training_data(data, filename):
     path = os.getcwd()
-    suffix = "_extracted.json"
+    suffix = ".json"
     data_path = path + "/data/" + filename + suffix
 
     try:

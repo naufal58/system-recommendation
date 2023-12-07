@@ -3,6 +3,7 @@ from src.utils.db import db
 # Import controllers
 from src.controllers.recommendation import Recommendation
 from src.pipeline.extract_features import extract_features, extract_from_file
+from src.pipeline.recommendation import system_recommendation_pipeline
 
 app = Flask(__name__)
 app.config.from_object('src.utils.setting.Config')
@@ -14,12 +15,15 @@ app.config.from_object('src.utils.setting.Config')
 def hello_world():
     return {'msg': "Hello World!"}
 
-@app.route("/demo", methods=['GET'])
-def demo_extract_features_pipeline():
-    pipeline = extract_features("These television are all to expensive for we to buy at this time, but perhaps we will return later", [0, 4, 7, 11])
-    if pipeline:
-        return pipeline
-    else:
+@app.route("/recommendation", methods=['POST'])
+def recommendation_pipeline():
+    filename = request.form['filename']
+    """This will download the result into excel format.
+    """
+    try:
+        result = system_recommendation_pipeline(filename)
+        return {'result': 'Data is downloaded into result.xlsx'}
+    except:
         return {'msg': 'there is an error!'}
 
 @app.route("/extract-feature/file", methods=['POST'])
@@ -31,7 +35,7 @@ def feature_extraction_file_pipeline():
     return {'msg': 'Failed'}
 
 # adding routes
-app.add_url_rule('/recommendation/<int:id>', view_func=Recommendation.recommendation, methods=['GET',])
+# app.add_url_rule('/recommendation/<int:id>', view_func=Recommendation.recommendation, methods=['GET',])
 
 #run
 if __name__ == '__main__':
