@@ -162,7 +162,6 @@ class FeatureExtraction():
         elif key_answer_pos[1].startswith("W"):
             error_type = '5w + 1h'
         else:
-            print(key_answer_pos)
             error_type = 'other'
         return error_type
     
