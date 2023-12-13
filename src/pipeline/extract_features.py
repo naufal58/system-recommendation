@@ -30,13 +30,15 @@ def extract_features(text, underline, data, essential_features_only=False):
 
     return response
 
-def extract_from_file(filename):
+def extract_from_file(filename, full_pipeline=False):
     training_data = get_training_data(filename)
     data_extract = []
     print('Starting pipeline...')
     for data in training_data:
         data_extract.append(extract_features(data['soal'], preprocess_underlined(data['underline']), data, essential_features_only=True))
     set_training_data({'data': data_extract}, filename)
+    if full_pipeline:
+        return data_extract
     print(f'Data questions from {filename} file has been extracted.')
     return {'msg': f'Data questions from {filename} file has been extracted.'}
 
