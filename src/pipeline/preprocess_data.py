@@ -25,11 +25,14 @@ def preprocess_pipeline(filename, full_pipeline=False):
     if convert_to_json(filename):
         data_files = get_training_data(filename)
         for data in data_files:
-            processed_data = DataPreprocess(data)
-            processed_data.replace_missing_symbols()
-            processed_data.get_underlines()
-            processed_data.check_answer_result()
-            training_data.append(processed_data.get_data())
+            try:
+                processed_data = DataPreprocess(data)
+                processed_data.replace_missing_symbols()
+                processed_data.get_underlines()
+                processed_data.check_answer_result()
+                training_data.append(processed_data.get_data())
+            except:
+                return False
         if full_pipeline:
             return training_data
         elif set_training_data(filename, training_data):
