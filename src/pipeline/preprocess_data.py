@@ -2,6 +2,7 @@ from src.controllers.data_preprocess import DataPreprocess, convert_to_json
 import os
 import json
 
+
 def get_training_data(filename):
     path = os.path.join(os.getcwd(), 'data')
     data_path = os.path.join(path, filename + '.json')
@@ -10,12 +11,14 @@ def get_training_data(filename):
         training_data = json.load(training_file)
     return training_data
 
+
 def set_training_data(filename, data):
     path = os.path.join(os.getcwd(), 'data')
     data_path = os.path.join(path, filename + '.json')
     with open(data_path, 'w') as f:
         json.dump(data, f, indent=4)
     return True
+
 
 def preprocess_pipeline(filename, full_pipeline=False):
     training_data = []
