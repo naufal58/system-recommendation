@@ -12,6 +12,7 @@ def extract_features(text, underline, data, essential_features_only=False):
     #     _, response['irregular_verbs'], response['regular_verbs'] = question_characteristics.tag_features()
 
     response['tense_type'] = question_characteristics.tenses_type()
+    response['subject_verb_agreement'] = question_characteristics.check_subject_verb_agreement()
 
     # temp_homophones = question_characteristics.count_homophones()
     # if temp_homophones[0]:

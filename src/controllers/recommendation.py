@@ -102,11 +102,3 @@ class Recommendation():
             action, slug = "perform the relevant activity", "general"
 
         return action, slug
-
-
-        # action, slug = paired_actions.get((antecedent, consequent))
-
-        # if not action:
-        #     action, slug = actions.get(antecedent)
-
-        # return action, slug
