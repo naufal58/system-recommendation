@@ -110,7 +110,6 @@ class FeatureExtraction():
         words = word_tokenize(self.preprocess(self.text))
         pos_tags = pos_tag(words)
         key_answer = self.data['key_answer'][1]
-        print(key_answer.lower())
 
         subject_number = None
         verb_number = None
