@@ -79,7 +79,7 @@ class Recommendation():
             antecedent_action, antecedent_slug = actions.get(antecedents, ("", ""))
             consequent_action, consequent_slug = actions.get(consequents, ("", ""))
 
-            recommendation = f"To improve in '{antecedents}', you should {antecedent_action}. Additionally, to enhance your skills in '{consequents}', {consequent_action}. Learn more at smartengtest/{antecedent_slug} and smartengtest/{consequent_slug}."
+            recommendation = f"You should {antecedent_action}. Additionally, to enhance your skills you should{consequent_action}. Learn more at smartengtest/{antecedent_slug} and smartengtest/{consequent_slug}."
             recommendations.append(recommendation)
         
         return recommendations
