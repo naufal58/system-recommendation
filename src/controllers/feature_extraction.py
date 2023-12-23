@@ -1,5 +1,5 @@
 import nltk
-from nltk import word_tokenize, pos_tag, sent_tokenize, ne_chunk, RegexpParser
+from nltk import word_tokenize, pos_tag, sent_tokenize
 from nltk.corpus import cmudict
 import pandas as pd
 import os

@@ -36,7 +36,6 @@ class Recommendation():
         encoded_data = encoder.fit(data_list).transform(data_list)
 
         df = pd.DataFrame(encoded_data, columns=encoder.columns_)
-        print (df)
 
         frequent_itemsets = fpgrowth(df, min_support=0.3, use_colnames=True)
 
@@ -47,7 +46,6 @@ class Recommendation():
 
         rules = rules[rules.apply(lambda row: len(row['antecedents']) + len(row['consequents']) <= 3, axis=1)]
         filtered_rules = rules.head(3)
-        print(filtered_rules)
         
         return filtered_rules
 
@@ -79,7 +77,7 @@ class Recommendation():
             antecedent_action, antecedent_slug = actions.get(antecedents, ("", ""))
             consequent_action, consequent_slug = actions.get(consequents, ("", ""))
 
-            recommendation = f"You should {antecedent_action}. Additionally, to enhance your skills you should{consequent_action}. Learn more at smartengtest/{antecedent_slug} and smartengtest/{consequent_slug}."
+            recommendation = f"You should {antecedent_action}. Additionally, to enhance your skills you should {consequent_action}. Learn more at smartengtest/{antecedent_slug} and smartengtest/{consequent_slug}."
             recommendations.append(recommendation)
         
         return recommendations
