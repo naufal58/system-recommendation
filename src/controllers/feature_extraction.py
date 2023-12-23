@@ -1,5 +1,5 @@
 import nltk
-from nltk import word_tokenize, pos_tag, sent_tokenize, ne_chunk
+from nltk import word_tokenize, pos_tag, sent_tokenize
 from nltk.corpus import cmudict
 import pandas as pd
 import os
@@ -105,7 +105,89 @@ class FeatureExtraction():
             return 'past'
         else:
             return 'present'
+    
+    def check_subject_verb_agreement(self):
+        words = word_tokenize(self.preprocess(self.text))
+        pos_tags = pos_tag(words)
+        key_answer = self.data['key_answer'][1]
 
+        subject_number = None
+        verb_number = None
+        is_compound_subject = False # Tandai buat melacak jika ada subject dan noun yang memiliki and
+        modals = False # Tandai buat melacak jika ada verb modal
+
+        subject = None
+        verb = None
+
+        for i, (word, tag) in enumerate(pos_tags):
+            # cek untuk pronoun singular dan plural
+            if tag == 'PRP':
+                if tag in ['PRP', 'NN', 'NNP']:
+                    subject = word
+                    subject_number = 'singular'
+                elif tag in ['NNS', 'NNPS']:
+                    subject = word
+                    subject_number = 'plural'
+            
+            # cek singular dan plural untuk noun
+            elif tag in ['NN', 'NNP']:
+                subject_number = 'singular'
+            elif tag in ['NNS', 'NNPS']:
+                subject_number = 'plural'
+
+            if subject_number and i < len(pos_tags) - 2 and pos_tags[i + 1][0].lower() == 'and':
+                next_tag = pos_tags[i + 2][1]
+                if next_tag in ['PRP', 'NN', 'NNP', 'NNS', 'NNPS']:
+                    is_compound_subject = True
+
+            # cek kata kerja modal
+            if tag == ['MD']:
+                modals = True
+
+            # menentukan singular dan plural untuk verb present tense
+            if tag in ['VBZ']:
+                verb = word
+                verb_number = 'singular'
+            elif tag in ['VBP', 'VB']:
+                verb = word
+                verb_number = 'plural'
+
+            # menentukan singular dan plural di ver past tense
+            elif tag in ['VBD', 'VBN']:
+                if word.lower() == 'was':
+                    verb_number = 'singular'
+                elif word.lower() == 'were':
+                    verb_number = 'plural'
+                else:
+                    #asumsi verb past tense lain, jadikan sama dengan subject
+                    verb_number = subject_number
+
+            # cek untuk agreement
+            agreement = None
+            if subject_number is not None and verb_number is not None:
+                if is_compound_subject:
+                    agreement = verb_number == 'plural'  # gabungan subject singular menjadi plural
+                elif modals and tag == 'VB':  # setelah modal selalu verb untuk present tens
+                    agreement = True
+                else:
+                    agreement = subject_number == verb_number
+
+            if not agreement:
+                for word, tag in pos_tags:
+                    if tag in ['NN', 'NNS', 'NNP', 'NNPS', 'PRP']:
+                        if subject is None:
+                            subject = word
+                    if tag in ['VB', 'VBP', 'VBZ', 'VBD', 'VBN', 'MD']:
+                        if verb is None:
+                            verb = word
+
+            if subject and key_answer.lower() == subject.lower():
+                return True  # key answer dan subject matching
+            if verb and key_answer.lower() == verb.lower():
+                return True  # key answer dan verb matching
+
+        return agreement
+        
     def word_frequency(self, word, dictionary, freq_dict):
         i = 0
         stat = 0
