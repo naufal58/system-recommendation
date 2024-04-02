@@ -1,0 +1,12 @@
+{'Antecedent': 'plural_expression', 'Consequent': 'past_participle', 'Support': 0.09090909090909091, 'Confidence': 1.0}
+{'Antecedent': 'gerund_phrase_requirement', 'Consequent': 'infinitive_requirement', 'Support': 0.13636363636363635, 'Confidence': 1.0}
+{'Antecedent': 'irregular_past_form', 'Consequent': 'singular_expression', 'Support': 0.36363636363636365, 'Confidence': 1.0}
+{'Antecedent': 'past_participle & gerund_phrase_requirement', 'Consequent': 'infinitive_requirement', 'Support': 0.09090909090909091, 'Confidence': 1.0}
+{'Antecedent': 'infinitive_requirement & irregular_past_form', 'Consequent': 'singular_expression', 'Support': 0.09090909090909091, 'Confidence': 1.0}
+{'Antecedent': 'infinitive_requirement & irregular_past_form', 'Consequent': 'gerund_requirement', 'Support': 0.09090909090909091, 'Confidence': 1.0}
+{'Antecedent': 'irregular_past_form & importance_subjunctive_verb', 'Consequent': 'singular_expression', 'Support': 0.13636363636363635, 'Confidence': 1.0}
+{'Antecedent': 'irregular_past_form & gerund_requirement', 'Consequent': 'singular_expression', 'Support': 0.13636363636363635, 'Confidence': 1.0}
+{'Antecedent': 'infinitive_requirement & irregular_past_form', 'Consequent': 'singular_expression & gerund_requirement', 'Support': 0.09090909090909091, 'Confidence': 1.0}
+{'Antecedent': 'infinitive_requirement & irregular_past_form & singular_expression', 'Consequent': 'gerund_requirement', 'Support': 0.09090909090909091, 'Confidence': 1.0}
+{'Antecedent': 'infinitive_requirement & irregular_past_form & gerund_requirement', 'Consequent': 'singular_expression', 'Support': 0.09090909090909091, 'Confidence': 1.0}
+{'Antecedent': 'infinitive_requirement & singular_expression & gerund_requirement', 'Consequent': 'irregular_past_form', 'Support': 0.09090909090909091, 'Confidence': 1.0}

@@ -9,7 +9,7 @@ def random_string(n):
  
     return res
 
-def get_training_data(filename = "training_data"):
+def get_training_data(filename = "naufalSC"):
     path = os.path.join(os.getcwd(), 'data')
     data_path = os.path.join(path, filename + '.json')
 
@@ -34,6 +34,10 @@ def preprocess_underlined(underline):
     for i in underline.split(','):
         underline_list.append(int(i.split('-')[0]))
     return underline_list
+
+def preprocess_key_answer(key_answer):
+    # Assuming key_answer is a list and we need the second element
+    return key_answer[1].lower()
 
 def has_answer_only(training_data):
     new_data = []

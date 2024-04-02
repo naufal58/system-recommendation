@@ -1,0 +1,34 @@
+Antecedent: irregular_past_form & gerund_requirement, Consequent: singular_expression, Support: 0.11764705882352941, Confidence: 1.0
+Antecedent: gerund_phrase_requirement, Consequent: infinitive_requirement, Support: 0.11764705882352941, Confidence: 1.0
+Antecedent: plural_expression, Consequent: past_participle, Support: 0.11764705882352941, Confidence: 0.7999999999999999
+Antecedent: singular_expression & infinitive_requirement, Consequent: gerund_requirement, Support: 0.11764705882352941, Confidence: 0.7999999999999999
+Antecedent: irregular_past_form, Consequent: singular_expression, Support: 0.3235294117647059, Confidence: 0.7857142857142858
+Antecedent: infinitive_requirement, Consequent: gerund_requirement, Support: 0.20588235294117646, Confidence: 0.6363636363636364
+Antecedent: singular_expression, Consequent: irregular_past_form, Support: 0.3235294117647059, Confidence: 0.6111111111111112
+Antecedent: gerund_requirement, Consequent: singular_expression, Support: 0.23529411764705882, Confidence: 0.5714285714285714
+Antecedent: importance_subjunctive_verb, Consequent: singular_expression, Support: 0.11764705882352941, Confidence: 0.5714285714285714
+Antecedent: gerund_requirement & infinitive_requirement, Consequent: singular_expression, Support: 0.11764705882352941, Confidence: 0.5714285714285714
+Antecedent: infinitive_requirement, Consequent: past_participle, Support: 0.17647058823529413, Confidence: 0.5454545454545454
+Antecedent: singular_expression & gerund_requirement, Consequent: infinitive_requirement, Support: 0.11764705882352941, Confidence: 0.5
+Antecedent: gerund_requirement, Consequent: infinitive_requirement, Support: 0.20588235294117646, Confidence: 0.5
+Antecedent: gerund_requirement, Consequent: past_participle, Support: 0.20588235294117646, Confidence: 0.5
+Antecedent: past_participle, Consequent: gerund_requirement, Support: 0.20588235294117646, Confidence: 0.5
+Antecedent: singular_expression & gerund_requirement, Consequent: irregular_past_form, Support: 0.11764705882352941, Confidence: 0.5
+Antecedent: infinitive_requirement, Consequent: singular_expression, Support: 0.14705882352941177, Confidence: 0.45454545454545453
+Antecedent: singular_expression, Consequent: gerund_requirement, Support: 0.23529411764705882, Confidence: 0.4444444444444444
+Antecedent: past_participle, Consequent: singular_expression, Support: 0.17647058823529413, Confidence: 0.4285714285714286
+Antecedent: past_participle, Consequent: infinitive_requirement, Support: 0.17647058823529413, Confidence: 0.4285714285714286
+Antecedent: irregular_past_form & singular_expression, Consequent: gerund_requirement, Support: 0.11764705882352941, Confidence: 0.3636363636363636
+Antecedent: infinitive_requirement, Consequent: gerund_requirement & singular_expression, Support: 0.11764705882352941, Confidence: 0.3636363636363636
+Antecedent: infinitive_requirement, Consequent: gerund_phrase_requirement, Support: 0.11764705882352941, Confidence: 0.3636363636363636
+Antecedent: singular_expression, Consequent: past_participle, Support: 0.17647058823529413, Confidence: 0.33333333333333337
+Antecedent: gerund_requirement, Consequent: singular_expression & infinitive_requirement, Support: 0.11764705882352941, Confidence: 0.2857142857142857
+Antecedent: irregular_past_form, Consequent: gerund_requirement, Support: 0.11764705882352941, Confidence: 0.2857142857142857
+Antecedent: gerund_requirement, Consequent: irregular_past_form & singular_expression, Support: 0.11764705882352941, Confidence: 0.2857142857142857
+Antecedent: gerund_requirement, Consequent: irregular_past_form, Support: 0.11764705882352941, Confidence: 0.2857142857142857
+Antecedent: past_participle, Consequent: plural_expression, Support: 0.11764705882352941, Confidence: 0.2857142857142857
+Antecedent: irregular_past_form, Consequent: gerund_requirement & singular_expression, Support: 0.11764705882352941, Confidence: 0.2857142857142857
+Antecedent: singular_expression, Consequent: infinitive_requirement, Support: 0.14705882352941177, Confidence: 0.2777777777777778
+Antecedent: singular_expression, Consequent: irregular_past_form & gerund_requirement, Support: 0.11764705882352941, Confidence: 0.2222222222222222
+Antecedent: singular_expression, Consequent: gerund_requirement & infinitive_requirement, Support: 0.11764705882352941, Confidence: 0.2222222222222222
+Antecedent: singular_expression, Consequent: importance_subjunctive_verb, Support: 0.11764705882352941, Confidence: 0.2222222222222222

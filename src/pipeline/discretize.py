@@ -7,7 +7,6 @@ def start(filename, training_data=False, full_pipeline=False):
     else:
         feature_data = training_data
     discrete_data = Discretization(feature_data)
-    discrete_data.normalize_numeric()
     new_data = discrete_data.remove_correct_answers()
     set_training_data(new_data, filename)
     return new_data

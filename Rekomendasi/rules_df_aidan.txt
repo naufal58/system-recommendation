@@ -1,0 +1,5 @@
+{'Antecedent': 'factual_conditional', 'Consequent': 'singular_expression', 'Support': 0.13333333333333333, 'Confidence': 1.0}
+{'Antecedent': 'relative_pronouns', 'Consequent': 'singular_expression', 'Support': 0.13333333333333333, 'Confidence': 1.0}
+{'Antecedent': 'past_participle & irregular_past_form', 'Consequent': 'singular_expression', 'Support': 0.13333333333333333, 'Confidence': 1.0}
+{'Antecedent': 'importance_subjunctive_verb & irregular_past_form', 'Consequent': 'singular_expression', 'Support': 0.13333333333333333, 'Confidence': 1.0}
+{'Antecedent': 'importance_subjunctive_verb & singular_expression', 'Consequent': 'irregular_past_form', 'Support': 0.13333333333333333, 'Confidence': 1.0}

@@ -1,0 +1,145 @@
+    Input:
+    data: list transaksi
+    minSupport: ambang batas minimum untuk support
+
+    Output:
+    frequentItemsets: itemset yang memenuhi support
+    
+    Procedure ECLAT(currentItems, itemsAndTransactions, minSupport, frequentItemsets)
+    Begin
+        While itemsAndTransactions is not empty Do
+            // Ambil dan hapus item terakhir dari itemsAndTransactions
+            item, transactions = Remove the last item from itemsAndTransactions
+            // Buat itemset baru dengan menambahkan item ke currentItems
+            newItemset = Copy currentItems and add item to it
+            // Hitung jumlah transaksi di mana newItemset muncul
+            support = Count(transactions)
+            
+            // Jika newItemset memenuhi atau melebihi minSupport
+            If support >= minSupport Then
+                // Catat newItemset dan support ke dalam frequentItemsets
+                frequentItemsets = Add newItemset with support to frequentItemsets
+                
+                // Siapkan daftar untuk item yang akan dipertimbangkan berikutnya
+                nextItems = Initialize an empty list
+                
+                // Untuk setiap otherItem dan otherTransactions dalam itemsAndTransactions
+                For each otherItem, otherTransactions in itemsAndTransactions Do
+                    // Hitung irisan dari transactions
+                    commonTransactions = Intersection(transactions, otherTransactions)
+                    If commonTransactions is not empty Then
+                        // Tambahkan otherItem dan commonTransactions ke nextItems
+                        nextItems = Add (otherItem, commonTransactions) to nextItems
+                    End If
+                Done
+                
+                // Urutkan nextItems berdasarkan jumlah transaksi secara menurun
+                Sort nextItems by count of transactions in descending order
+                // Lakukan panggilan rekursif untuk memproses level itemset berikutnya
+                Call ECLAT(newItemset, nextItems, minSupport, frequentItemsets)
+            End If
+        Done
+    End Procedure
+
+    Procedure RUN_ECLAT(data, minSupport)
+    Begin
+        // Ubah data ke format vertikal
+        Initialize itemTransactions as an empty map
+        For each transaction in data with index transactionID Do
+            For each item in transaction Do
+                If item is not in itemTransactions Then
+                    // Inisialisasi itemTransactions[item] sebagai set kosong
+                    Initialize itemTransactions[item] as an empty set
+                End If
+                // Tambahkan transactionID ke dalam set untuk item tersebut
+                Add transactionID to itemTransactions[item]
+            Done
+        Done
+        
+        // Filter dan urutkan item berdasarkan jumlah transaksi yang memenuhi atau melebihi minSupport
+        items = Filter and sort items in itemTransactions by count of transactions >= minSupport in descending order
+        
+        // Inisialisasi peta untuk menyimpan itemset yang sering muncul
+        Initialize frequentItemsets as an empty map
+        // Mulai proses pencarian itemset yang sering muncul secara rekursif
+        Call ECLAT with (an empty set, items, minSupport, frequentItemsets)
+        
+        Return frequentItemsets
+    End Procedure
+
+1. Convert Data to Vertical Format
+Input: data binary list of transaction.
+
+Process Steps:
+
+Convert the dataset to a mapping from each item to the set of transaction IDs in which that item appears.
+Output:
+
+item_transactions: A dictionary where each key is an item and each value is a set of transaction IDs (TIDs) where the item appears.
+
+Example output:
+
+{
+    'milk': {0, 2, 3, 4},
+    'bread': {0, 1, 3, 4},
+    'diaper': {1, 2, 3, 4},
+    'beer': {1, 2, 3},
+    'eggs': {1},
+    'cola': {2, 4}
+}
+
+
+2. Filter and Sort Items
+Input: item_transactions and min_support = 2.
+
+Process Steps:
+
+Count transactions for each item and filter by min_support.
+Sort items by their transaction count in descending order.
+Output:
+
+items: A sorted list of tuples, filtered by min_support.
+Example output:
+
+[('bread', {0, 1, 3, 4}), ('diaper', {1, 2, 3, 4}), ('milk', {0, 2, 3, 4}), ('beer', {1, 2, 3}), ('cola', {2, 4})]
+
+
+3. ECLAT Recursive Mining
+Input: prefix = set(), items (as filtered and sorted above), min_support = 2, frequent_itemsets = {}.
+
+Process Steps:
+
+Recursively explore item combinations starting with an empty prefix.
+For each item, calculate the support and, if it meets min_support, add to frequent_itemsets.
+Output:
+
+frequent_itemsets: A map with frequent itemsets and their supports.
+Example output:
+
+{
+    frozenset({'bread'}): 4,
+    frozenset({'diaper'}): 4,
+    frozenset({'milk'}): 4,
+    frozenset({'beer'}): 3,
+    frozenset({'cola'}): 2,
+    frozenset({'bread', 'milk'}): 3,
+    ...
+}
+
+4. Run ECLAT
+Input: data and min_support = 2.
+
+Output:
+
+The frequent_itemsets dictionary with each frequent itemset found within the dataset and its support.
+Final output example:
+
+{
+    ('bread'): 4,
+    ('diaper'): 4,
+    ('milk'): 4,
+    ('beer'): 3,
+    ('cola'): 2,
+    ('bread', 'milk'): 3,
+    ...
+}

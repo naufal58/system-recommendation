@@ -1,0 +1,10 @@
+Crucial:
+- {'gerund_requirement': ['Understand Gerunds and their Usage', 'Practice Gerund Forms', 'Differentiate between Gerunds and Present Participles']}
+
+Important:
+- {'infinitive_requirement': ['Understand the Use of Infinitives', 'Practice Infinitive Forms', 'Differentiate between Bare Infinitive and To-Infinitive']}
+
+Recommended:
+- {'irregular_past_form': ['Learn Past Tense', 'Learn Verb Forms', 'Learn Irregular Verbs']}
+- {'gerund_phrase_requirement': ['Construct Sentences with Gerund Phrases', 'Recognize Gerund Phrase Functions']}
+
