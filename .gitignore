@@ -34,3 +34,7 @@ migrations/
 
 data/*.json
 data/*.csv
+
+#ignore text and xlsx
+*.xlsx
+*.txt
